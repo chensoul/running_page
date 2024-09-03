@@ -43,7 +43,6 @@ const YearStat = ({ year, onClick }: { year: string, onClick: (_year: string) =>
       streak = Math.max(streak, run.streak);
     }
   });
-  sumDistance = parseFloat((sumDistance / 1000.0).toFixed(1));
   const avgPace = formatPace(totalMetersAvail / totalSecondsAvail);
   const hasHeartRate = !(heartRate === 0);
   const avgHeartRate = (heartRate / (runs.length - heartRateNullCount)).toFixed(
@@ -57,9 +56,9 @@ const YearStat = ({ year, onClick }: { year: string, onClick: (_year: string) =>
     >
       <section>
         <Stat value={year} description=" Year" />
-        <Stat value={runs.length} description=" Times" distance={sumDistance} />
-        <Stat value={runs.filter(r => r.type == 'Run').length} description=" Runs" distance={runs.filter(r => r.type == 'Run').map(r => r.distance||0).reduce((t, c) => t + c, 0)} />
-        <Stat value={runs.filter(r => r.type == 'Ride').length} description=" Rides" distance={runs.filter(r => r.type == 'Run').map(r => r.distance||0).reduce((t, c) => t + c, 0)}/>
+        <Stat value={runs.length} description=" Total" distance={sumDistance} />
+        <Stat value={runs.filter(r => r.type == 'Run').length} description=" Runs" distance={runs.filter(r => r.type == 'Run').map(r => r.distance || 0).reduce((t, c) => t + c, 0)} />
+        <Stat value={runs.filter(r => r.type == 'Ride').length} description=" Rides" distance={runs.filter(r => r.type == 'Ride').map(r => r.distance || 0).reduce((t, c) => t + c, 0)} />
         <Stat value={`${streak} day`} description=" Streak" />
         {hasHeartRate && (
           <Stat value={avgHeartRate} description=" Avg Heart Rate" />
