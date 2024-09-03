@@ -42,7 +42,7 @@ const RunTable = ({
   const sortRunTimeFunc: SortFunc = (a, b) => {
     const aTotalSeconds = convertMovingTime2Sec(a.moving_time);
     const bTotalSeconds = convertMovingTime2Sec(b.moving_time);
-    return sortFuncInfo === 'Time'
+    return sortFuncInfo === 'COST'
       ? aTotalSeconds - bTotalSeconds
       : bTotalSeconds - aTotalSeconds;
   };
@@ -52,7 +52,7 @@ const RunTable = ({
     ['KM', sortKMFunc],
     ['Pace', sortPaceFunc],
     ['BPM', sortBPMFunc],
-    ['Time', sortRunTimeFunc],
+    ['COST', sortRunTimeFunc],
     ['Date', sortDateFuncClick],
   ]);
 
@@ -71,7 +71,7 @@ const RunTable = ({
         <thead>
           <tr>
             <th />
-            <th>Type</th>
+            <th />
             {Array.from(sortFuncMap.keys()).map((k) => (
               <th key={k} onClick={handleClick}>
                 {k}
