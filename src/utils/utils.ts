@@ -210,6 +210,7 @@ const titleForRun = (run: Activity): string => {
     if (runHour > 18 && runHour <= 21) {
       return RUN_TITLES.EVENING_RUN_TITLE;
     }
+    return RUN_TITLES.NIGHT_RUN_TITLE;
   } else if (run.type == 'Ride'){
     if (runHour >= 0 && runHour <= 10) {
       return RUN_TITLES.MORNING_RIDE_TITLE;
@@ -223,6 +224,7 @@ const titleForRun = (run: Activity): string => {
     if (runHour > 18 && runHour <= 21) {
       return RUN_TITLES.EVENING_RIDE_TITLE;
     }
+    return RUN_TITLES.NIGHT_RIDE_TITLE;
   }
   return RUN_TITLES.DEFAULT_TITLE;
 };

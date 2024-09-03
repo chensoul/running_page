@@ -71,7 +71,7 @@ const MIDDAY_RIDE_TITLE = IS_CHINESE ? '午间骑行' : 'Midday Ride';
 const AFTERNOON_RIDE_TITLE = IS_CHINESE ? '午后骑行' : 'Afternoon Ride';
 const EVENING_RIDE_TITLE = IS_CHINESE ? '傍晚骑行' : 'Evening Ride';
 const NIGHT_RIDE_TITLE = IS_CHINESE ? '夜晚骑行' : 'Night Ride';
-const DEFAULT_TITLE = IS_CHINESE ? '运动' : 'Exercise';
+const DEFAULT_TITLE = IS_CHINESE ? '其他运动' : 'Other Exercise';
 
 const RUN_TITLES = {
   FULL_MARATHON_RUN_TITLE,
