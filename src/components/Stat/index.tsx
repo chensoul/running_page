@@ -18,7 +18,7 @@ const Stat = ({
   onClick,
 }: IStatProperties) => {(
   <div className={`${className}`} onClick={onClick}>
-    { distance && ( <span className={`text-${citySize || 5}xl font-bold italic`}>
+    { distance > 0 && ( <span className={`text-${citySize || 5}xl font-bold italic`}>
       {intComma(value.toString())}
     </span>
     <span className="text-lg font-semibold italic">{description}</span>
