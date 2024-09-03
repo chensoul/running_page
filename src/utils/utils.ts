@@ -4,7 +4,7 @@ import { WebMercatorViewport } from 'viewport-mercator-project';
 import { chinaGeojson, RPGeometry } from '@/static/run_countries';
 import worldGeoJson from '@surbowl/world-geo-json-zh/world.zh.json';
 import { chinaCities } from '@/static/city';
-import { MAIN_COLOR, MUNICIPALITY_CITIES_ARR, NEED_FIX_MAP, RUN_TITLES } from './const';
+import { MAIN_COLOR, MUNICIPALITY_CITIES_ARR, NEED_FIX_MAP, RUN_TITLES, TYPES } from './const';
 import { FeatureCollection, LineString } from 'geojson';
 
 export type Coordinate = [number, number];
@@ -229,6 +229,15 @@ const titleForRun = (run: Activity): string => {
   return RUN_TITLES.DEFAULT_TITLE;
 };
 
+const titleForType = (run: Activity): string => {
+  if (run.type == 'Run'){
+    return TYPES.RUN_TYPE;
+  } else if (run.type == 'Ride'){
+    return TYPES.RIDE_TYPE;
+  }
+  return TYPES.DEFAULT_TYPE;
+};
+
 export interface IViewState {
   longitude?: number;
   latitude?: number;
@@ -315,6 +324,7 @@ export {
   geoJsonForRuns,
   geoJsonForMap,
   titleForRun,
+  titleForType,
   filterYearRuns,
   filterCityRuns,
   filterTitleRuns,

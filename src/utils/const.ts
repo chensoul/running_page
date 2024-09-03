@@ -73,6 +73,10 @@ const EVENING_RIDE_TITLE = IS_CHINESE ? '傍晚骑行' : 'Evening Ride';
 const NIGHT_RIDE_TITLE = IS_CHINESE ? '夜晚骑行' : 'Night Ride';
 const DEFAULT_TITLE = IS_CHINESE ? '其他运动' : 'Other Exercise';
 
+const RUN_TYPE = IS_CHINESE ? '跑步' : 'Run';
+const RIDE_TYPE = IS_CHINESE ? '骑行' : 'Ride';
+const DEFAULT_TYPE = IS_CHINESE ? '其他' : 'Other';
+
 const RUN_TITLES = {
   FULL_MARATHON_RUN_TITLE,
   HALF_MARATHON_RUN_TITLE,
@@ -89,6 +93,12 @@ const RUN_TITLES = {
   DEFAULT_TITLE
 };
 
+const TYPES = {
+  RUN_TYPE,
+  RIDE_TYPE,
+  DEFAULT_TYPE
+};
+
 export {
   USE_GOOGLE_ANALYTICS,
   GOOGLE_ANALYTICS_TRACKING_ID,
@@ -101,6 +111,7 @@ export {
   ROAD_LABEL_DISPLAY,
   INFO_MESSAGE,
   RUN_TITLES,
+  TYPES,
   USE_ANIMATION_FOR_GRID,
   USE_DASH_LINE,
   LINE_OPACITY,

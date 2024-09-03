@@ -1,4 +1,4 @@
-import { formatPace, titleForRun, formatRunTime, Activity, RunIds } from '@/utils/utils';
+import { formatPace, titleForRun, titleForType, formatRunTime, Activity, RunIds } from '@/utils/utils';
 import styles from './style.module.css';
 
 interface IRunRowProperties {
@@ -11,7 +11,6 @@ interface IRunRowProperties {
 
 const RunRow = ({ elementIndex, locateActivity, run, runIndex, setRunIndex }: IRunRowProperties) => {
   const distance = (run.distance / 1000.0).toFixed(2);
-  const type = run.type;
   const paceParts = run.average_speed ? formatPace(run.average_speed) : null;
   const heartRate = run.average_heartrate;
   const runTime = formatRunTime(run.moving_time);
@@ -32,7 +31,7 @@ const RunRow = ({ elementIndex, locateActivity, run, runIndex, setRunIndex }: IR
       onClick={handleClick}
     >
       <td>{titleForRun(run)}</td>
-      <td>{type}</td>
+      <td>{titleForType(run)}</td>
       <td>{distance}</td>
       {paceParts && <td>{paceParts}</td>}
       <td>{heartRate && heartRate.toFixed(0)}</td>
