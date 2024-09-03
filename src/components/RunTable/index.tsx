@@ -42,18 +42,18 @@ const RunTable = ({
   const sortRunTimeFunc: SortFunc = (a, b) => {
     const aTotalSeconds = convertMovingTime2Sec(a.moving_time);
     const bTotalSeconds = convertMovingTime2Sec(b.moving_time);
-    return sortFuncInfo === 'COST'
+    return sortFuncInfo === 'Cost'
       ? aTotalSeconds - bTotalSeconds
       : bTotalSeconds - aTotalSeconds;
   };
   const sortDateFuncClick =
-    sortFuncInfo === 'Date' ? sortDateFunc : sortDateFuncReverse;
+    sortFuncInfo === 'StartTime' ? sortDateFunc : sortDateFuncReverse;
   const sortFuncMap = new Map([
     ['KM', sortKMFunc],
     ['Pace', sortPaceFunc],
     ['BPM', sortBPMFunc],
-    ['COST', sortRunTimeFunc],
-    ['Date', sortDateFuncClick],
+    ['Cost', sortRunTimeFunc],
+    ['StartTime', sortDateFuncClick],
   ]);
 
   const handleClick: React.MouseEventHandler<HTMLElement> = (e) => {
