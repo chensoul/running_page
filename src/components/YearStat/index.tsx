@@ -24,6 +24,7 @@ const YearStat = ({ year, onClick }: { year: string, onClick: (_year: string) =>
   let heartRateNullCount = 0;
   let totalMetersAvail = 0;
   let totalSecondsAvail = 0;
+
   runs.forEach((run) => {
     sumDistance += run.distance || 0;
     if (run.average_speed) {
@@ -57,6 +58,8 @@ const YearStat = ({ year, onClick }: { year: string, onClick: (_year: string) =>
       <section>
         <Stat value={year} description=" Year" />
         <Stat value={runs.length} description=" Times" />
+        <Stat value={runs.filter(r => r.type == 'Run').length} description=" Runs" />
+        <Stat value={runs.filter(r => r.type == 'Ride').length} description=" Rides" />
         <Stat value={sumDistance} description=" KM" />
         <Stat value={avgPace} description=" Avg Pace" />
         <Stat value={`${streak} day`} description=" Streak" />
