@@ -24,6 +24,7 @@ const YearStat = ({ year, onClick }: { year: string, onClick: (_year: string) =>
   let heartRateNullCount = 0;
   let totalMetersAvail = 0;
   let totalSecondsAvail = 0;
+  const workoutsCounts = {};
 
   runs.forEach((run) => {
     sumDistance += run.distance || 0;
@@ -31,6 +32,13 @@ const YearStat = ({ year, onClick }: { year: string, onClick: (_year: string) =>
       pace += run.average_speed;
       totalMetersAvail += run.distance || 0;
       totalSecondsAvail += (run.distance || 0) / run.average_speed;
+
+      if(workoutsCounts[run.type]){
+        var [oriCount, oriSecondsAvail, oriMetersAvail] = workoutsCounts[run.type]
+        workoutsCounts[run.type] = [oriCount + 1, oriSecondsAvail + (run.distance || 0) / run.average_speed, oriMetersAvail + (run.distance || 0)]
+      }else{
+        workoutsCounts[run.type] = [1, (run.distance || 0) / run.average_speed, run.distance]
+      }
     } else {
       paceNullCount++;
     }
@@ -48,6 +56,12 @@ const YearStat = ({ year, onClick }: { year: string, onClick: (_year: string) =>
   const avgHeartRate = (heartRate / (runs.length - heartRateNullCount)).toFixed(
     0
   );
+
+  const workoutsArr = Object.entries(workoutsCounts);
+  workoutsArr.sort((a, b) => {
+    return b[1][0] - a[1][0]
+  });
+
   return (
     <div
       className="cursor-pointer"
@@ -57,9 +71,11 @@ const YearStat = ({ year, onClick }: { year: string, onClick: (_year: string) =>
       <section>
         <Stat value={year} description=" Year" />
         <Stat value={runs.length} description=" Total" distance={sumDistance} />
-        <Stat value={runs.filter(r => r.type == 'Run').length} description=" Runs" distance={runs.filter(r => r.type == 'Run').map(r => r.distance || 0).reduce((t, c) => t + c, 0)} />
-        <Stat value={runs.filter(r => r.type == 'Ride').length} description=" Rides" distance={runs.filter(r => r.type == 'Ride').map(r => r.distance || 0).reduce((t, c) => t + c, 0)} />
-        <Stat value={runs.filter(r => r.type == 'Hike').length} description=" Hikes" distance={runs.filter(r => r.type == 'Hike').map(r => r.distance || 0).reduce((t, c) => t + c, 0)} />
+
+        { workoutsArr.map(([type, count]) => (
+          <Stat value={count[0]} description={` ${type}`+"s"} distance={(count[2] / 1000.0).toFixed(1)} />
+        ))}
+
         <Stat value={`${streak} day`} description=" Streak" />
         {hasHeartRate && (
           <Stat value={avgHeartRate} description=" Avg Heart Rate" />
