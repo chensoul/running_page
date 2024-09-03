@@ -37,7 +37,7 @@ const YearStat = ({ year, onClick }: { year: string, onClick: (_year: string) =>
         var [oriCount, oriSecondsAvail, oriMetersAvail] = workoutsCounts[run.type]
         workoutsCounts[run.type] = [oriCount + 1, oriSecondsAvail + (run.distance || 0) / run.average_speed, oriMetersAvail + (run.distance || 0)]
       }else{
-        workoutsCounts[run.type] = [1, (run.distance || 0) / run.average_speed, run.distance]
+        workoutsCounts[run.type] = [1, (run.distance || 0) / run.average_speed, run.distance || 0]
       }
     } else {
       paceNullCount++;
@@ -73,7 +73,7 @@ const YearStat = ({ year, onClick }: { year: string, onClick: (_year: string) =>
         <Stat value={runs.length} description=" Total" distance={sumDistance} />
 
         { workoutsArr.map(([type, count]) => (
-          <Stat value={count[0]} description={` ${type}`+"s"} distance={(count[2] / 1000.0).toFixed(1)} />
+          <Stat value={count[0]} description={` ${type}`+"s"} distance={count[2]} />
         ))}
 
         <Stat value={`${streak} day`} description=" Streak" />

@@ -22,7 +22,7 @@ const Stat = ({
     {intComma(value.toString())}
     </span>
     <span className="text-2xl font-semibold italic">{description}</span>
-    { distance > 0 && (<span className="text-5xl font-bold italic">{ " " + distance}</span>)}
+    { distance > 0 && (<span className="text-5xl font-bold italic">{ " " + parseFloat((distance / 1000.0).toFixed(1))}</span>)}
     { distance > 0 && (<span className="text-2xl font-semibold italic"> KM</span>)}
   </div>
 );
