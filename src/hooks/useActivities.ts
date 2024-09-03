@@ -20,8 +20,7 @@ const useActivities = () => {
     }
 
     const { city, province, country } = location;
-    // drop only one char city
-    if (city.length > 1) {
+    if (city.length >= 1) {
       cities[city] = cities[city] ? cities[city] + run.distance : run.distance;
     }
     if (province) provinces.add(province);
