@@ -225,6 +225,8 @@ const titleForRun = (run: Activity): string => {
       return RUN_TITLES.EVENING_RIDE_TITLE;
     }
     return RUN_TITLES.NIGHT_RIDE_TITLE;
+  } else if (run.type == 'Hike'){
+    return RUN_TITLES.HIKE_TITLE;
   }
   return RUN_TITLES.DEFAULT_TITLE;
 };
@@ -234,6 +236,8 @@ const titleForType = (run: Activity): string => {
     return TYPES.RUN_TYPE;
   } else if (run.type == 'Ride'){
     return TYPES.RIDE_TYPE;
+  } else if (run.type == 'Hike'){
+    return TYPES.HIKE_TYPE;
   }
   return TYPES.DEFAULT_TYPE;
 };

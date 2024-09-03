@@ -71,10 +71,12 @@ const MIDDAY_RIDE_TITLE = IS_CHINESE ? '午间骑行' : 'Midday Ride';
 const AFTERNOON_RIDE_TITLE = IS_CHINESE ? '午后骑行' : 'Afternoon Ride';
 const EVENING_RIDE_TITLE = IS_CHINESE ? '傍晚骑行' : 'Evening Ride';
 const NIGHT_RIDE_TITLE = IS_CHINESE ? '夜晚骑行' : 'Night Ride';
+const HIKE_TITLE = IS_CHINESE ? '步行' : 'Hike';
 const DEFAULT_TITLE = IS_CHINESE ? '其他运动' : 'Other Exercise';
 
 const RUN_TYPE = IS_CHINESE ? '跑步' : 'Run';
 const RIDE_TYPE = IS_CHINESE ? '骑行' : 'Ride';
+const HIKE_TYPE = IS_CHINESE ? '步行' : 'Hike';
 const DEFAULT_TYPE = IS_CHINESE ? '其他' : 'Other';
 
 const RUN_TITLES = {
@@ -90,12 +92,14 @@ const RUN_TITLES = {
   AFTERNOON_RIDE_TITLE,
   EVENING_RIDE_TITLE,
   NIGHT_RIDE_TITLE,
+  HIKE_TITLE,
   DEFAULT_TITLE
 };
 
 const TYPES = {
   RUN_TYPE,
   RIDE_TYPE,
+  HIKE_TYPE,
   DEFAULT_TYPE
 };
 
