@@ -28,6 +28,8 @@ const RunTable = ({
 }: IRunTableProperties) => {
   const [sortFuncInfo, setSortFuncInfo] = useState('');
   // TODO refactor?
+  const sortTypeFunc: SortFunc = (a, b) =>
+    sortFuncInfo === 'Type' ? a.type.toLowerCase().localeCompare(b.type.toLowerCase()) : b.type.toLowerCase().localeCompare(a.type.toLowerCase())
   const sortKMFunc: SortFunc = (a, b) =>
     sortFuncInfo === 'KM' ? a.distance - b.distance : b.distance - a.distance;
   const sortPaceFunc: SortFunc = (a, b) =>
@@ -49,6 +51,7 @@ const RunTable = ({
   const sortDateFuncClick =
     sortFuncInfo === 'StartTime' ? sortDateFunc : sortDateFuncReverse;
   const sortFuncMap = new Map([
+    ['Type', sortTypeFunc],
     ['KM', sortKMFunc],
     ['Pace', sortPaceFunc],
     ['BPM', sortBPMFunc],
@@ -70,7 +73,6 @@ const RunTable = ({
       <table className={styles.runTable} cellSpacing="0" cellPadding="0">
         <thead>
           <tr>
-            <th />
             <th />
             {Array.from(sortFuncMap.keys()).map((k) => (
               <th key={k} onClick={handleClick}>
