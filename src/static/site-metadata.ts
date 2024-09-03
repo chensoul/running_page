@@ -10,8 +10,8 @@ interface ISiteMetadataResult {
 }
 
 const data: ISiteMetadataResult = {
-  siteTitle: 'ChenSoul Run',
-  siteUrl: 'https://run.chensou.cc',
+  siteTitle: 'ChenSoul Exercise',
+  siteUrl: 'https://run.chensoul.cc',
   logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTtc69JxHNcmN1ETpMUX4dozAgAN6iPjWalQ&usqp=CAU',
   description: 'Personal site and blog',
   navLinks: [
