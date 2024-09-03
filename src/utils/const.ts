@@ -51,7 +51,7 @@ const CHINESE_INFO_MESSAGE = (yearLength: number, year: string): string => {
   return `我用 App 记录自己的运动已经 ${yearLength} 年了，右边地图展示的是${yearStr}的数据。每一次的跑步、骑行或步行，都是对生活热爱的表达，对健康追求的实践。希望随着时间的推移，地图点亮的地方会越来越多。`;
 };
 const ENGLISH_INFO_MESSAGE = (yearLength: number, year: string): string =>
-  `Exercise with ${yearLength} Years, the right Map shows year ${year} data`;
+  `Workout with ${yearLength} Years, the right Map shows year ${year} data`;
 
 // not support English for now
 const CHINESE_LOCATION_INFO_MESSAGE_FIRST =
@@ -72,7 +72,7 @@ const AFTERNOON_RIDE_TITLE = IS_CHINESE ? '午后骑行' : 'Afternoon Ride';
 const EVENING_RIDE_TITLE = IS_CHINESE ? '傍晚骑行' : 'Evening Ride';
 const NIGHT_RIDE_TITLE = IS_CHINESE ? '夜晚骑行' : 'Night Ride';
 const HIKE_TITLE = IS_CHINESE ? '步行' : 'Hike';
-const DEFAULT_TITLE = IS_CHINESE ? '其他运动' : 'Other Exercise';
+const DEFAULT_TITLE = IS_CHINESE ? '其他运动' : 'Other Workout';
 
 const RUN_TYPE = IS_CHINESE ? '跑步' : 'Run';
 const RIDE_TYPE = IS_CHINESE ? '骑行' : 'Ride';
