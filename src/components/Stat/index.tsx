@@ -18,12 +18,10 @@ const Stat = ({
   onClick,
 }: IStatProperties) => (
   <div className={`${className}`} onClick={onClick}>
-     { distance > 0 && (
-      <span className={`text-${citySize || 5}xl font-bold italic`}>
-      {intComma(value.toString())}
-      </span>
-      <span className="text-2xl font-semibold italic">{description}</span>
-    )}  
+    <span className={`text-${citySize || 5}xl font-bold italic`}>
+    {intComma(value.toString())}
+    </span>
+    <span className="text-2xl font-semibold italic">{description}</span>
     { distance > 0 && (<span className="text-5xl font-bold italic">{ " " + parseFloat((distance / 1000.0).toFixed(1))}</span>)}
     { distance > 0 && (<span className="text-2xl font-semibold italic"> KM</span>)}
   </div>
