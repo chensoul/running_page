@@ -12,7 +12,7 @@ interface ISiteMetadataResult {
 const data: ISiteMetadataResult = {
   siteTitle: 'ChenSoul 运动',
   siteUrl: 'https://run.chensoul.cc',
-  logo: 'https://avatars.githubusercontent.com/u/826932',
+  logo: 'https://chensoul.oss-cn-hangzhou.aliyuncs.com/images/favicon.jpg',
   description: 'ChenSoul 运动：跑步、骑行、健走',
   navLinks: [
     {
