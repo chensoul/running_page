@@ -95,7 +95,7 @@ def get_strava_last_time(client, is_milliseconds=True):
 def upload_file_to_strava(client, file_name, data_type, force_to_run=True):
     # 尝试以二进制写入模式打开文件，如果文件不存在，则创建一个空文件
     try:
-        with open(file_name, 'wb') as f:
+        with open(file_name, "wb") as f:
             pass  # 这里不写入任何内容，只是创建一个空文件
         print(f"File {file_name} has been created.")
     except Exception as e:
