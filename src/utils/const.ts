@@ -48,7 +48,7 @@ const IS_CHINESE = true;
 const USE_ANIMATION_FOR_GRID = false;
 const CHINESE_INFO_MESSAGE = (yearLength: number, year: string): string => {
   const yearStr = year === 'Total' ? '所有' : ` ${year} `;
-  return `我用 App 记录自己的运动已经 ${yearLength} 年了，右边地图展示的是${yearStr}的数据。每一次的跑步、骑行或步行，都是对生活热爱的表达，对健康追求的实践。希望随着时间的推移，地图点亮的地方会越来越多。`;
+  return `我用 App 记录自己的运动（跑步、骑行、健走）已经 ${yearLength} 年了，右边地图展示的是${yearStr}的数据。每一次运动，都是对生活热爱的表达，对健康追求的实践。希望随着时间的推移，地图点亮的地方会越来越多。`;
 };
 const ENGLISH_INFO_MESSAGE = (yearLength: number, year: string): string =>
   `Workout with ${yearLength} Years, the right Map shows year ${year} data`;
