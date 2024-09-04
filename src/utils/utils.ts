@@ -4,7 +4,7 @@ import { WebMercatorViewport } from 'viewport-mercator-project';
 import { chinaGeojson, RPGeometry } from '@/static/run_countries';
 import worldGeoJson from '@surbowl/world-geo-json-zh/world.zh.json';
 import { chinaCities } from '@/static/city';
-import { MAIN_COLOR, MUNICIPALITY_CITIES_ARR, NEED_FIX_MAP, RUN_TITLES, TYPES } from './const';
+import { MAIN_COLOR, MUNICIPALITY_CITIES_ARR, NEED_FIX_MAP, RUN_TITLES, TYPES_MAP, IS_CHINESE } from './const';
 import { FeatureCollection, LineString } from 'geojson';
 
 export type Coordinate = [number, number];
@@ -198,48 +198,36 @@ const titleForRun = (run: Activity): string => {
     if (runDistance >= 40) {
       return RUN_TITLES.FULL_MARATHON_RUN_TITLE;
     }
-    if (runHour >= 0 && runHour <= 10) {
-      return RUN_TITLES.MORNING_RUN_TITLE;
-    }
-    if (runHour > 10 && runHour <= 14) {
-      return RUN_TITLES.MIDDAY_RUN_TITLE;
-    }
-    if (runHour > 14 && runHour <= 18) {
-      return RUN_TITLES.AFTERNOON_RUN_TITLE;
-    }
-    if (runHour > 18 && runHour <= 21) {
-      return RUN_TITLES.EVENING_RUN_TITLE;
-    }
-    return RUN_TITLES.NIGHT_RUN_TITLE;
-  } else if (run.type == 'Ride'){
-    if (runHour >= 0 && runHour <= 10) {
-      return RUN_TITLES.MORNING_RIDE_TITLE;
-    }
-    if (runHour > 10 && runHour <= 14) {
-      return RUN_TITLES.MIDDAY_RIDE_TITLE;
-    }
-    if (runHour > 14 && runHour <= 18) {
-      return RUN_TITLES.AFTERNOON_RIDE_TITLE;
-    }
-    if (runHour > 18 && runHour <= 21) {
-      return RUN_TITLES.EVENING_RIDE_TITLE;
-    }
-    return RUN_TITLES.NIGHT_RIDE_TITLE;
-  } else if (run.type == 'Hike'){
-    return RUN_TITLES.HIKE_TITLE;
+  } 
+
+  if (runHour >= 0 && runHour <= 10) {
+    return RUN_TITLES.MORNING_TITLE + " " + titleForType(run);
   }
-  return RUN_TITLES.DEFAULT_TITLE;
+  if (runHour > 10 && runHour <= 14) {
+    return RUN_TITLES.MIDDAY_TITLE + " " + titleForType(run);
+  }
+  if (runHour > 14 && runHour <= 18) {
+    return RUN_TITLES.AFTERNOON_TITLE + " " + titleForType(run);
+  }
+  if (runHour > 18 && runHour <= 21) {
+    return RUN_TITLES.EVENING_TITLE + " " + titleForType(run);
+  }else{
+    return RUN_TITLES.NIGHT_TITLE + " " + titleForType(run);
+  }
 };
 
+
 const titleForType = (run: Activity): string => {
-  if (run.type == 'Run'){
-    return TYPES.RUN_TYPE;
-  } else if (run.type == 'Ride'){
-    return TYPES.RIDE_TYPE;
-  } else if (run.type == 'Hike'){
-    return TYPES.HIKE_TYPE;
+  if(run.type == 'Run'){
+    return TYPES_MAP.Run;
+  }else if(run.type == 'Ride'){
+    return TYPES_MAP.Ride;
+  }else if(run.type == 'Walk'){
+    return TYPES_MAP.Walk;
+  }else if(run.type == 'Hike'){
+    return TYPES_MAP.Hike;
   }
-  return TYPES.DEFAULT_TYPE;
+  return TYPES_MAP.Other;
 };
 
 export interface IViewState {

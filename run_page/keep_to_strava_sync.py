@@ -36,7 +36,7 @@ def run_keep_sync(email, password, keep_sports_data_api, with_download_gpx=False
                 content = []
     old_tracks_ids = [str(a["run_id"]) for a in content]
     _new_tracks = get_all_keep_tracks(
-        email, password, old_tracks_ids, keep_sports_data_api, True
+        email, password, old_tracks_ids, keep_sports_data_api, with_download_gpx
     )
     new_tracks = []
     for track in _new_tracks:

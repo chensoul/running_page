@@ -61,46 +61,28 @@ const CHINESE_LOCATION_INFO_MESSAGE_SECOND = '不要停下来，不要停下运�
 const INFO_MESSAGE = IS_CHINESE ? CHINESE_INFO_MESSAGE : ENGLISH_INFO_MESSAGE;
 const FULL_MARATHON_RUN_TITLE = IS_CHINESE ? '全程马拉松' : 'Full Marathon';
 const HALF_MARATHON_RUN_TITLE = IS_CHINESE ? '半程马拉松' : 'Half Marathon';
-const MORNING_RUN_TITLE = IS_CHINESE ? '清晨跑步' : 'Morning Run';
-const MIDDAY_RUN_TITLE = IS_CHINESE ? '午间跑步' : 'Midday Run';
-const AFTERNOON_RUN_TITLE = IS_CHINESE ? '午后跑步' : 'Afternoon Run';
-const EVENING_RUN_TITLE = IS_CHINESE ? '傍晚跑步' : 'Evening Run';
-const NIGHT_RUN_TITLE = IS_CHINESE ? '夜晚跑步' : 'Night Run';
-const MORNING_RIDE_TITLE = IS_CHINESE ? '清晨骑行' : 'Morning Ride';
-const MIDDAY_RIDE_TITLE = IS_CHINESE ? '午间骑行' : 'Midday Ride';
-const AFTERNOON_RIDE_TITLE = IS_CHINESE ? '午后骑行' : 'Afternoon Ride';
-const EVENING_RIDE_TITLE = IS_CHINESE ? '傍晚骑行' : 'Evening Ride';
-const NIGHT_RIDE_TITLE = IS_CHINESE ? '夜晚骑行' : 'Night Ride';
-const HIKE_TITLE = IS_CHINESE ? '步行' : 'Hike';
-const DEFAULT_TITLE = IS_CHINESE ? '其他运动' : 'Other Workout';
+const MORNING_TITLE = IS_CHINESE ? '清晨' : 'Morning';
+const MIDDAY_TITLE = IS_CHINESE ? '午间' : 'Midday';
+const AFTERNOON_TITLE = IS_CHINESE ? '午后' : 'Afternoon';
+const EVENING_TITLE = IS_CHINESE ? '傍晚' : 'Evening';
+const NIGHT_TITLE = IS_CHINESE ? '夜晚' : 'Night';
 
-const RUN_TYPE = IS_CHINESE ? '跑步' : 'Run';
-const RIDE_TYPE = IS_CHINESE ? '骑行' : 'Ride';
-const HIKE_TYPE = IS_CHINESE ? '步行' : 'Hike';
-const DEFAULT_TYPE = IS_CHINESE ? '其他' : 'Other';
+const TYPES_MAP = {
+  Run: IS_CHINESE ? "跑步" : "Run",
+  Ride: IS_CHINESE ? "骑行" : 'Ride',
+  Walk: IS_CHINESE ? "健走" : "Walk",
+  Hike: IS_CHINESE ? "远足" : "Hike",
+  Other: IS_CHINESE ? "其他" : "Other",
+}
 
 const RUN_TITLES = {
   FULL_MARATHON_RUN_TITLE,
   HALF_MARATHON_RUN_TITLE,
-  MORNING_RUN_TITLE,
-  MIDDAY_RUN_TITLE,
-  AFTERNOON_RUN_TITLE,
-  EVENING_RUN_TITLE,
-  NIGHT_RUN_TITLE,
-  MORNING_RIDE_TITLE,
-  MIDDAY_RIDE_TITLE,
-  AFTERNOON_RIDE_TITLE,
-  EVENING_RIDE_TITLE,
-  NIGHT_RIDE_TITLE,
-  HIKE_TITLE,
-  DEFAULT_TITLE
-};
-
-const TYPES = {
-  RUN_TYPE,
-  RIDE_TYPE,
-  HIKE_TYPE,
-  DEFAULT_TYPE
+  MORNING_TITLE,
+  MIDDAY_TITLE,
+  AFTERNOON_TITLE,
+  EVENING_TITLE,
+  NIGHT_TITLE,
 };
 
 export {
@@ -115,7 +97,7 @@ export {
   ROAD_LABEL_DISPLAY,
   INFO_MESSAGE,
   RUN_TITLES,
-  TYPES,
+  TYPES_MAP,
   USE_ANIMATION_FOR_GRID,
   USE_DASH_LINE,
   LINE_OPACITY,

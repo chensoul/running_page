@@ -196,6 +196,7 @@ def get_all_keep_tracks(
             print(f"parsing keep id {run}")
             try:
                 run_data = get_single_run_data(s, headers, run, api)
+                print(run_data)
                 track = parse_raw_data_to_nametuple(
                     run_data, old_gpx_ids, s, with_download_gpx
                 )
@@ -309,8 +310,8 @@ def find_nearest_hr(
 
 def download_keep_gpx(gpx_data, keep_id):
     try:
-        print(f"downloading keep_id {str(keep_id)} gpx")
         file_path = os.path.join(GPX_FOLDER, str(keep_id) + ".gpx")
+        print(f"downloading keep_id {str(keep_id)} gpx to {file_path}")
         with open(file_path, "w") as fb:
             fb.write(gpx_data)
         return file_path
