@@ -104,6 +104,8 @@ English | [简体中文](https://github.com/yihong0618/running_page/blob/master/
 | [Guoxin](https://github.com/guoxinl)              | <https://running.guoxin.space/>                | Strava      |
 | [laihj](https://github.com/laihj)                 | <https://run.laihjx.com/>                      | 苹果健身     |
 | [Ginta](https://github.com/mar-heaven)            | <https://running.ginta.top/>                   | Keep         |
+| [Chensoul](https://github.com/chensoul)            | <https://run.chensoul.cc/>                   | Keep、Strava         |
+
 </details>
 
 ## How it works
