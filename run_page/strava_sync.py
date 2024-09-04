@@ -25,7 +25,7 @@ def run_strava_sync(client_id, client_secret, refresh_token, only_run=False):
             d["type"],
             d["distance"],
             d["moving_time"],
-            round(d["average_speed"] * 3.6, 2), # 速度（公里/小时）=速度（米/秒）×3.6
+            round(d["average_speed"] * 3.6, 2),  # 速度（公里/小时）=速度（米/秒）×3.6
             d["location_country"],
         ]
         for d in activities_list
@@ -33,7 +33,15 @@ def run_strava_sync(client_id, client_secret, refresh_token, only_run=False):
     with open(CSV_FILE, "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(
-            ["start_date_local", "type", "name", "distance", "moving_time", "average_speed", "location_country"]
+            [
+                "start_date_local",
+                "type",
+                "name",
+                "distance",
+                "moving_time",
+                "average_speed",
+                "location_country",
+            ]
         )
         writer.writerows(run_data)
 
