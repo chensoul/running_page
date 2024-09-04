@@ -12,7 +12,7 @@ def run_strava_sync(client_id, client_secret, refresh_token, only_run=False):
     generator.set_strava_config(client_id, client_secret, refresh_token)
     # if you want to refresh data change False to True
     generator.only_run = only_run
-    generator.sync(False)
+    generator.sync(True)
 
     activities_list = generator.load()
     with open(JSON_FILE, "w") as f:
@@ -22,8 +22,10 @@ def run_strava_sync(client_id, client_secret, refresh_token, only_run=False):
         [
             d["start_date_local"],
             d["name"],
+            d["type"],
             d["distance"],
             d["moving_time"],
+            round(d["average_speed"] * 3.6, 2), # 速度（公里/小时）=速度（米/秒）×3.6
             d["location_country"],
         ]
         for d in activities_list
@@ -31,7 +33,7 @@ def run_strava_sync(client_id, client_secret, refresh_token, only_run=False):
     with open(CSV_FILE, "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(
-            ["start_date_local", "name", "distance", "moving_time", "location_country"]
+            ["start_date_local", "type", "name", "distance", "moving_time", "average_speed", "location_country"]
         )
         writer.writerows(run_data)
 

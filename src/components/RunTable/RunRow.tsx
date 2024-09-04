@@ -11,6 +11,7 @@ interface IRunRowProperties {
 
 const RunRow = ({ elementIndex, locateActivity, run, runIndex, setRunIndex }: IRunRowProperties) => {
   const distance = (run.distance / 1000.0).toFixed(2);
+  const averageSpeed = (run.average_speed * 3.6).toFixed(2);
   const paceParts = run.average_speed ? formatPace(run.average_speed) : null;
   const heartRate = run.average_heartrate;
   const runTime = formatRunTime(run.moving_time);
@@ -32,11 +33,12 @@ const RunRow = ({ elementIndex, locateActivity, run, runIndex, setRunIndex }: IR
     >
       <td>{titleForRun(run)}</td>
       <td>{titleForType(run)}</td>
-      <td>{distance}</td>
-      {paceParts && <td>{paceParts}</td>}
-      <td>{heartRate && heartRate.toFixed(0)}</td>
+      <td>{distance} km</td>
+      <td>{averageSpeed} km/h</td>
+      {/* {paceParts && <td>{paceParts}</td>} */}
       <td>{runTime}</td>
-      <td className={styles.runDate}>{run.start_date_local}</td>
+      <td>{heartRate && heartRate.toFixed(0)}</td>
+      <td>{run.start_date_local}</td>
     </tr>
   );
 };
