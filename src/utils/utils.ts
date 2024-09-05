@@ -201,19 +201,18 @@ const titleForRun = (run: Activity): string => {
   } 
 
   if (runHour >= 0 && runHour <= 10) {
-    return RUN_TITLES.MORNING_TITLE + " " + titleForType(run);
+    return RUN_TITLES.MORNING_TITLE + titleForType(run);
   }
   if (runHour > 10 && runHour <= 14) {
-    return RUN_TITLES.MIDDAY_TITLE + " " + titleForType(run);
+    return RUN_TITLES.MIDDAY_TITLE + titleForType(run);
   }
   if (runHour > 14 && runHour <= 18) {
-    return RUN_TITLES.AFTERNOON_TITLE + " " + titleForType(run);
+    return RUN_TITLES.AFTERNOON_TITLE + titleForType(run);
   }
   if (runHour > 18 && runHour <= 21) {
-    return RUN_TITLES.EVENING_TITLE + " " + titleForType(run);
-  }else{
-    return RUN_TITLES.NIGHT_TITLE + " " + titleForType(run);
+    return RUN_TITLES.EVENING_TITLE + titleForType(run);
   }
+  return RUN_TITLES.NIGHT_TITLE + titleForType(run);
 };
 
 
