@@ -29,7 +29,7 @@ const RunTable = ({
   const [sortFuncInfo, setSortFuncInfo] = useState('');
   // TODO refactor?
   const sortTypeFunc: SortFunc = (a, b) =>
-    sortFuncInfo === 'Type' ? a.type.toLowerCase().localeCompare(b.type.toLowerCase()) : b.type.toLowerCase().localeCompare(a.type.toLowerCase())
+      sortFuncInfo === 'Type' ? a.type > b.type ? 1:-1 : b.type < a.type ? -1:1;
   const sortKMFunc: SortFunc = (a, b) =>
     sortFuncInfo === 'KM' ? a.distance - b.distance : b.distance - a.distance;
   const sortPaceFunc: SortFunc = (a, b) =>
@@ -73,6 +73,7 @@ const RunTable = ({
       <table className={styles.runTable} cellSpacing="0" cellPadding="0">
         <thead>
           <tr>
+            <th/>
             {Array.from(sortFuncMap.keys()).map((k) => (
               <th key={k} onClick={handleClick}>
                 {k}

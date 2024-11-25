@@ -51,8 +51,8 @@ const RICH_TITLE = true;
 const IS_CHINESE = true;
 const USE_ANIMATION_FOR_GRID = false;
 const CHINESE_INFO_MESSAGE = (yearLength: number, year: string): string => {
-  const yearStr = year === 'Total' ? '所有' : ` ${year} `;
-  return `我用 App 记录自己运动 ${yearLength} 年了，下面列表展示的是${yearStr}的数据`;
+  const yearStr = year === 'Total' ? '所有' : ` ${year} 年`;
+  return `陆续运动 ${yearLength} 年了，地图展示的是${yearStr}的轨迹`;
 };
 const ENGLISH_INFO_MESSAGE = (yearLength: number, year: string): string =>
   `Running Journey with ${yearLength} Years, the table shows year ${year} data`;

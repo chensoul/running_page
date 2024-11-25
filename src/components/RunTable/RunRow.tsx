@@ -31,6 +31,7 @@ const RunRow = ({ elementIndex, locateActivity, run, runIndex, setRunIndex }: IR
       onClick={handleClick}
     >
       <td>{titleForRun(run)}</td>
+      <td>{run.type}</td>
       <td>{distance}</td>
       {paceParts && <td>{paceParts}</td>}
       <td>{heartRate && heartRate.toFixed(0)}</td>
