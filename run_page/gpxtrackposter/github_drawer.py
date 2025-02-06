@@ -25,7 +25,7 @@ class GithubDrawer(TracksDrawer):
         year_length_style = f"font-size:{110 * 3.0 / 80.0}px; font-family:Arial;"
         month_names_style = f"font-size:2.5px; font-family:Arial"
         total_length_year_dict = self.poster.total_length_year_dict
-        
+
         is_align_monday = self.poster.github_style == "align-monday"
         for year in range(self.poster.years.from_year, self.poster.years.to_year + 1)[
             ::-1
@@ -122,7 +122,7 @@ class GithubDrawer(TracksDrawer):
 
             # add every day of this year for 53 weeks and per week has 7 days
             for i in range(54):
-                 # the first day of the first week of the year may not Monday
+                # the first day of the first week of the year may not Monday
                 # so we need to skip some empty spaces
                 if i == 0:
                     rect_y = offset.y + year_size + 2 + 3.5 * first_day_weekday
