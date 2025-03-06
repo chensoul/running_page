@@ -10,7 +10,7 @@ interface ISiteMetadataResult {
 }
 
 const data: ISiteMetadataResult = {
-  siteTitle: 'Running Page',
+  siteTitle: 'Chensoul Run',
   siteUrl: 'https://run.chensoul.cc',
   logo: 'https://blog.chensoul.cc/images/favicon.webp',
   description: 'Personal site and blog',

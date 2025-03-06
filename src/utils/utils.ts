@@ -265,8 +265,9 @@ const getActivitySport = (act: Activity): string => {
 }
 
 const titleForRun = (run: Activity): string => {
-  const { city, province } = locationForRun(run);
+  let { city, province } = locationForRun(run);
   const activity_sport = getActivitySport(run);
+  city = city || '';
 
   if (RICH_TITLE) {
     // 1. try to use user defined name
@@ -284,26 +285,26 @@ const titleForRun = (run: Activity): string => {
 
   if (run.type === 'Run') {
     if (runDistance > 20 && runDistance < 40) {
-      return RUN_TITLES.HALF_MARATHON_RUN_TITLE;
+      return city + ' ' + RUN_TITLES.HALF_MARATHON_RUN_TITLE;
     }
     if (runDistance >= 40) {
-      return RUN_TITLES.FULL_MARATHON_RUN_TITLE;
+      return city + ' ' + RUN_TITLES.FULL_MARATHON_RUN_TITLE;
     }
   }
   
   if (runHour >= 0 && runHour <= 10) {
-    return RUN_TITLES.MORNING_TITLE + activity_sport;
+    return city + ' ' + RUN_TITLES.MORNING_TITLE + activity_sport;
   }
   if (runHour > 10 && runHour <= 14) {
-    return RUN_TITLES.MIDDAY_TITLE + activity_sport;
+    return city + ' ' + RUN_TITLES.MIDDAY_TITLE + activity_sport;
   }
   if (runHour > 14 && runHour <= 18) {
-    return RUN_TITLES.AFTERNOON_TITLE + activity_sport;
+    return city + ' ' + RUN_TITLES.AFTERNOON_TITLE + activity_sport;
   }
   if (runHour > 18 && runHour <= 21) {
-    return RUN_TITLES.EVENING_TITLE + activity_sport;
+    return city + ' ' + RUN_TITLES.EVENING_TITLE + activity_sport;
   }
-  return RUN_TITLES.NIGHT_TITLE + activity_sport;
+  return city + ' ' + RUN_TITLES.NIGHT_TITLE + activity_sport;
 };
 
 export interface IViewState {
