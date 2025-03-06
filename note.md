@@ -13,4 +13,6 @@ pnpm serve
 ```
 
 
+tcx 只支持 Running、Biking、Other。fit 支持类型多一些。
+
 - gpc to tcx: https://gotoes.org/strava/Combine_GPX_TCX_FIT_Files.php
