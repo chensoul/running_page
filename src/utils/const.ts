@@ -43,9 +43,13 @@ const ROAD_LABEL_DISPLAY = true;
 const PRIVACY_MODE = false;
 // update for now 2024/11/17 the lights on default is false
 //set to `false` if you want to make light off as default, only effect when `PRIVACY_MODE` = false
-const LIGHTS_ON = true;
+const LIGHTS_ON =false;
+//set to `true` if you want to show the 'Elevation Gain' column
+const SHOW_ELEVATION_GAIN = false;
 // richer title for the activity types (like garmin style)
 const RICH_TITLE = false;
+const SHOW_BPM = false;
+
 
 // IF you outside China please make sure IS_CHINESE = false
 const IS_CHINESE = true;
@@ -77,6 +81,17 @@ const HIKING_TITLE = IS_CHINESE ? '徒步' : 'Hiking';
 const CYCLING_TITLE = IS_CHINESE ? '骑行' : 'Cycling';
 const SKIING_TITLE = IS_CHINESE ? '滑雪' : 'Skiing';
 const WALKING_TITLE = IS_CHINESE ? '步行' : 'Walking';
+const ACTIVITY_COUNT_TITLE = IS_CHINESE ? '活动次数' : 'Activity Count';
+const MAX_DISTANCE_TITLE = IS_CHINESE ? '最远距离' : 'Max Distance';
+const MAX_SPEED_TITLE = IS_CHINESE ? '最快速度' : 'Max Speed';
+const TOTAL_TIME_TITLE = IS_CHINESE ? '总时间' : 'Total Time';
+const AVERAGE_SPEED_TITLE = IS_CHINESE ? '平均速度' : 'Average Speed';
+const TOTAL_DISTANCE_TITLE = IS_CHINESE ? '总距离' : 'Total Distance';
+const YEARLY_TITLE = IS_CHINESE ? 'Year' : 'Yearly';
+const MONTHLY_TITLE = IS_CHINESE ? 'Month' : 'Monthly';
+const WEEKLY_TITLE = IS_CHINESE ? 'Week' : 'Weekly';
+const DAILY_TITLE = IS_CHINESE ? 'Day' : 'Daily';
+const LOCATION_TITLE = IS_CHINESE ? 'Location' : 'Location';
 
 const ACTIVITY_TYPES = {
   RUN_GENERIC_TITLE,
@@ -97,6 +112,19 @@ const RUN_TITLES = {
   EVENING_TITLE,
   NIGHT_TITLE,
 };
+const ACTIVITY_TOTAL = {
+    ACTIVITY_COUNT_TITLE,
+    MAX_DISTANCE_TITLE,
+    MAX_SPEED_TITLE,
+    TOTAL_TIME_TITLE,
+    AVERAGE_SPEED_TITLE,
+    TOTAL_DISTANCE_TITLE,
+    YEARLY_TITLE,
+    MONTHLY_TITLE,
+    WEEKLY_TITLE,
+    DAILY_TITLE,
+    LOCATION_TITLE
+};
 
 export {
   USE_GOOGLE_ANALYTICS,
@@ -116,8 +144,11 @@ export {
   MAP_HEIGHT,
   PRIVACY_MODE,
   LIGHTS_ON,
+  SHOW_ELEVATION_GAIN,
+  SHOW_BPM,
   RICH_TITLE,
   ACTIVITY_TYPES,
+  ACTIVITY_TOTAL
 };
 
 const nike = 'rgb(224,237,94)'; // if you want change the main color change here src/styles/variables.scss
@@ -129,3 +160,10 @@ export const NEED_FIX_MAP = false;
 export const MAIN_COLOR = nike;
 export const PROVINCE_FILL_COLOR = '#47b8e0';
 export const COUNTRY_FILL_COLOR = dark_vanilla;
+
+export const RUN_COLOR = MAIN_COLOR;
+export const RUN_TRAIL_COLOR = 'rgb(255,153,51)';
+export const CYCLING_COLOR = 'rgb(51,255,87)';
+export const HIKING_COLOR = 'rgb(151,51,255)';
+export const WALKING_COLOR = HIKING_COLOR;
+export const SWIMMING_COLOR = 'rgb(255,51,51)';

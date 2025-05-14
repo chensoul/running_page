@@ -4,6 +4,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
+npm install pnpm 
 pnpm install
 
 rm -rf run_page/data.db src/static/activities.json
