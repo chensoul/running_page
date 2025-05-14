@@ -6,7 +6,7 @@ import {
   Activity,
   RunIds,
 } from '@/utils/utils';
-import { SHOW_ELEVATION_GAIN } from "@/utils/const";
+import { SHOW_ELEVATION_GAIN, SHOW_BPM } from "@/utils/const";
 
 import RunRow from './RunRow';
 import styles from './style.module.css';
@@ -30,6 +30,8 @@ const RunTable = ({
 }: IRunTableProperties) => {
   const [sortFuncInfo, setSortFuncInfo] = useState('');
   // TODO refactor?
+  const sortTypeFunc: SortFunc = (a, b) =>
+    sortFuncInfo === 'Type' ? a.type > b.type ? 1:-1 : b.type < a.type ? -1:1;
   const sortKMFunc: SortFunc = (a, b) =>
     sortFuncInfo === 'KM' ? a.distance - b.distance : b.distance - a.distance;
   const sortElevationGainFunc: SortFunc = (a, b) =>
@@ -55,6 +57,7 @@ const RunTable = ({
   const sortDateFuncClick =
     sortFuncInfo === 'Date' ? sortDateFunc : sortDateFuncReverse;
   const sortFuncMap = new Map([
+    ['Type', sortTypeFunc],
     ['KM', sortKMFunc],
     ['Elevation Gain', sortElevationGainFunc],
     ['Pace', sortPaceFunc],
@@ -65,6 +68,9 @@ const RunTable = ({
   if (!SHOW_ELEVATION_GAIN){
     sortFuncMap.delete('Elevation Gain')
   }
+  if (!SHOW_BPM){
+      sortFuncMap.delete('BPM')
+    }
 
   const handleClick: React.MouseEventHandler<HTMLElement> = (e) => {
     const funcName = (e.target as HTMLElement).innerHTML;

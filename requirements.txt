@@ -16,7 +16,7 @@ aiofiles
 cloudscraper==1.2.58
 tcxreader
 rich
-lxml
+lxml==5.0.2
 eviltransform
 stravaweblib
 tenacity
@@ -28,5 +28,5 @@ haversine==2.8.0
 garth
 pycryptodome
 duckdb
-openai==1.76.2 
+openai==1.76.2
 cairosvg
