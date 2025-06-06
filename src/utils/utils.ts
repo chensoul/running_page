@@ -289,7 +289,7 @@ const getActivitySport = (act: Activity): string => {
 }
 
 const titleForRun = (run: Activity): string => {
-  let { city, province } = locationForRun(run);
+  let { city } = locationForRun(run);
   const activity_sport = getActivitySport(run);
   city = city || '';
 
