@@ -8,7 +8,7 @@ npm install pnpm
 pnpm install
 
 rm -rf run_page/data.db src/static/activities.json
-python3 run_page/keep_sync.py xxx xxx --sync-types running hiking cycling
+python3 run_page/keep_sync.py xxx xxx --sync-types running
 
 pnpm serve
 ```

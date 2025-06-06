@@ -24,3 +24,7 @@ config.yaml
 
 route.png
 route.svg
+
+pnpm-lock.yaml
+package-lock.json
+pnpm-lock.yaml

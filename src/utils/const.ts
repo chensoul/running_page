@@ -43,7 +43,7 @@ const ROAD_LABEL_DISPLAY = true;
 const PRIVACY_MODE = false;
 // update for now 2024/11/17 the lights on default is false
 //set to `false` if you want to make light off as default, only effect when `PRIVACY_MODE` = false
-const LIGHTS_ON = false;
+const LIGHTS_ON =true;
 //set to `true` if you want to show the 'Elevation Gain' column
 const SHOW_ELEVATION_GAIN = false;
 // richer title for the activity types (like garmin style)
@@ -101,7 +101,7 @@ const ACTIVITY_TYPES = {
   CYCLING_TITLE,
   SKIING_TITLE,
   WALKING_TITLE,
-};
+}
 
 const RUN_TITLES = {
   FULL_MARATHON_RUN_TITLE,
@@ -113,17 +113,17 @@ const RUN_TITLES = {
   NIGHT_TITLE,
 };
 const ACTIVITY_TOTAL = {
-  ACTIVITY_COUNT_TITLE,
-  MAX_DISTANCE_TITLE,
-  MAX_SPEED_TITLE,
-  TOTAL_TIME_TITLE,
-  AVERAGE_SPEED_TITLE,
-  TOTAL_DISTANCE_TITLE,
-  YEARLY_TITLE,
-  MONTHLY_TITLE,
-  WEEKLY_TITLE,
-  DAILY_TITLE,
-  LOCATION_TITLE,
+    ACTIVITY_COUNT_TITLE,
+    MAX_DISTANCE_TITLE,
+    MAX_SPEED_TITLE,
+    TOTAL_TIME_TITLE,
+    AVERAGE_SPEED_TITLE,
+    TOTAL_DISTANCE_TITLE,
+    YEARLY_TITLE,
+    MONTHLY_TITLE,
+    WEEKLY_TITLE,
+    DAILY_TITLE,
+    LOCATION_TITLE
 };
 
 export {
@@ -148,7 +148,7 @@ export {
   SHOW_BPM,
   RICH_TITLE,
   ACTIVITY_TYPES,
-  ACTIVITY_TOTAL,
+  ACTIVITY_TOTAL
 };
 
 const nike = 'rgb(224,237,94)'; // if you want change the main color change here src/styles/variables.scss
