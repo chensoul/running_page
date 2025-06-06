@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - master
+      - mybranch
     paths:
       - run_page/nike_sync.py
       - run_page/nike_to_strava_sync.py
