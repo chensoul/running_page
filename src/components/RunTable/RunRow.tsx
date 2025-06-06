@@ -20,8 +20,8 @@ const RunRow = ({ elementIndex, locateActivity, run, runIndex, setRunIndex }: IR
     if (runIndex === elementIndex) {
       setRunIndex(-1);
       locateActivity([]);
-      return
-    };
+      return;
+    }
     setRunIndex(elementIndex);
     locateActivity([run.run_id]);
   };
