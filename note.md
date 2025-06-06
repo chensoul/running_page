@@ -13,5 +13,4 @@ python3 run_page/keep_sync.py xxx xxx --sync-types running
 pnpm serve
 ```
 
-
 - gpc to tcx: https://gotoes.org/strava/Combine_GPX_TCX_FIT_Files.php
