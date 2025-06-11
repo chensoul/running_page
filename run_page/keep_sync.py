@@ -350,7 +350,7 @@ def save_to_csv(activities_list, csv_file="activities.csv"):
     fieldnames = [
         'start_date_local',
         'type',
-        'name',
+        # 'name',
         'distance',
         'moving_time',
         'average_speed',
@@ -360,8 +360,8 @@ def save_to_csv(activities_list, csv_file="activities.csv"):
     ]
     
     try:
-        # Create assets directory if it doesn't exist
-        assets_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets')
+        # Create assets directory in root if it doesn't exist
+        assets_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets')
         os.makedirs(assets_dir, exist_ok=True)
         
         # Create full path for CSV file
