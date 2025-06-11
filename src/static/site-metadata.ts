@@ -27,7 +27,7 @@ const data: ISiteMetadataResult = {
     {
       name: 'Blog',
       url: 'https://blog.chensoul.cc',
-    }
+    },
   ],
 };
 
