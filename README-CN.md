@@ -122,6 +122,7 @@ R.I.P. 希望大家都能健康顺利的跑过终点，逝者安息。
 | [Evan](https://github.com/LinghaoChan)            | <https://github.com/LinghaoChan/running>       | Keep        |
 | [Shuqi](https://github.com/zhufengme)             | <https://runner-shuqi.devlink.cn/>             | Garmin      |
 | [shugoal](https://github.com/shugoal)             | <https://shugoal.github.io/wk-shu/>            | Garmin      |
+| [chensoul](https://github.com/chensoul)              | <https://run.chensoul.cc/>                     | Keep      |
 
 </details>
 

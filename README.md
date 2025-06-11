@@ -51,7 +51,7 @@ English | [简体中文](https://github.com/yihong0618/running_page/blob/master/
 <br>
 
 | Runner                                               | page                                           | App         |
-| ---------------------------------------------------- | ---------------------------------------------- | ----------- |
+|------------------------------------------------------|------------------------------------------------| ----------- |
 | [zhubao315](https://github.com/zhubao315)            | <https://zhubao315.github.io/running>          | Strava      |
 | [shaonianche](https://github.com/shaonianche)        | <https://run.duanfei.org>                      | Strava      |
 | [yihong0618](https://github.com/yihong0618)          | <https://yihong.run>                           | Nike        |
@@ -109,7 +109,7 @@ English | [简体中文](https://github.com/yihong0618/running_page/blob/master/
 | [PPZ](https://github.com/8824PPZ)                    | <https://run.dudubbbbbbbbb.top/>               | Strava      |
 | [Yer1k](https://github.com/Yer1k)                    | <https://running.yer1k.com/>                   | Strava      |
 | [AlienVision](https://github.com/weaming)            | <https://run.drink.cafe/>                      | Strava      |
-| [闻笑忘](https://wenxiaowan.com)                     | <https://wenxiaowan.com>                       | 苹果健身    |
+| [闻笑忘](https://wenxiaowan.com)                        | <https://wenxiaowan.com>                       | 苹果健身    |
 | [Vensent](https://github.com/Vensent)                | <https://vensent.github.io/workouts_page/>     | Garmin      |
 | [Zeonsing](https://github.com/NoonieBao)             | <https://run.jogzeal.com/>                     | Coros       |
 | [yaoper](https://github.com/yaoper)                  | <https://running.yaoper.cn>                    | codoon      |
@@ -125,6 +125,7 @@ English | [简体中文](https://github.com/yihong0618/running_page/blob/master/
 | [Daniel](https://danielyu316.github.io/running_page) | <https://danielyu316.github.io/running_page/>  | Codoon      |
 | [arthurfsy2](https://github.com/arthurfsy2)          | <https://fsy.4a1801.life>                      | Garmin      |
 | [JMGutiH](https://github.com/JMGutiH)                | <https://jmgutih.github.io/workouts_page/>     | Strava      |
+| [chensoul](https://github.com/chensoul)              | <https://run.chensoul.cc/>                     | Keep      |
 
 </details>
 
