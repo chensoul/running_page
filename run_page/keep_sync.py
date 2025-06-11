@@ -337,7 +337,7 @@ def download_keep_gpx(gpx_data, keep_id):
 def save_to_csv(activities_list, csv_file="activities.csv"):
     """
     Save activities data to a CSV file with specific fields.
-    
+
     Args:
         activities_list (list): List of activity data
         csv_file (str): Name of the CSV file to save to
@@ -345,60 +345,68 @@ def save_to_csv(activities_list, csv_file="activities.csv"):
     if not activities_list:
         print("No activities to save")
         return
-        
+
     # Define specific fields to save
     fieldnames = [
-        'start_date_local',
-        'type',
+        "start_date_local",
+        "type",
         # 'name',
-        'distance',
-        'moving_time',
-        'average_speed',
+        "distance",
+        "moving_time",
+        "average_speed",
         # 'average_heartrate',
-        'streak',
-        'location_country'
+        "streak",
+        "location_country",
     ]
-    
+
     try:
         # Create assets directory in root if it doesn't exist
-        assets_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets')
+        assets_dir = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets"
+        )
         os.makedirs(assets_dir, exist_ok=True)
-        
+
         # Create full path for CSV file
         csv_path = os.path.join(assets_dir, csv_file)
-        
-        with open(csv_path, 'w', newline='', encoding='utf-8') as f:
+
+        with open(csv_path, "w", newline="", encoding="utf-8") as f:
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
             for activity in activities_list:
                 # Handle both dictionary and namedtuple objects
-                activity_dict = activity._asdict() if hasattr(activity, '_asdict') else activity
-                
+                activity_dict = (
+                    activity._asdict() if hasattr(activity, "_asdict") else activity
+                )
+
                 # Round distance to 2 decimal places
-                if 'distance' in activity_dict:
+                if "distance" in activity_dict:
                     try:
-                        activity_dict['distance'] = round(float(activity_dict['distance']), 2)
+                        activity_dict["distance"] = round(
+                            float(activity_dict["distance"]), 2
+                        )
                     except (ValueError, TypeError):
-                        activity_dict['distance'] = ''
-                
+                        activity_dict["distance"] = ""
+
                 # Convert average_speed from m/s to min/km
-                if 'average_speed' in activity_dict:
+                if "average_speed" in activity_dict:
                     try:
-                        speed = float(activity_dict['average_speed'])  # speed in m/s
+                        speed = float(activity_dict["average_speed"])  # speed in m/s
                         if speed > 0:  # Avoid division by zero
                             # Convert to min/km: (1000/speed)/60
                             minutes_per_km = 1000 / speed
                             td = timedelta(seconds=minutes_per_km)
                             # Format as HH:MM:SS without microseconds
-                            activity_dict['average_speed'] = str(td).split('.')[0]
+                            activity_dict["average_speed"] = str(td).split(".")[0]
                         else:
-                            activity_dict['average_speed'] = ''
+                            activity_dict["average_speed"] = ""
                     except (ValueError, TypeError, ZeroDivisionError):
-                        activity_dict['average_speed'] = ''
+                        activity_dict["average_speed"] = ""
                 else:
-                    activity_dict['average_speed'] = ''
-                
-                writer.writerow({field: activity_dict.get(field, '') for field in fieldnames})
+                    activity_dict["average_speed"] = ""
+
+                writer.writerow(
+                    {field: activity_dict.get(field, "") for field in fieldnames}
+                )
         print(f"Successfully saved {len(activities_list)} activities to {csv_path}")
     except Exception as e:
         print(f"Error saving to CSV: {str(e)}")
@@ -415,7 +423,7 @@ def run_keep_sync(email, password, keep_sports_data_api, with_download_gpx=False
     activities_list = generator.load()
     with open(JSON_FILE, "w") as f:
         json.dump(activities_list, f)
-    
+
     # Save to CSV with specific filename
     save_to_csv(activities_list, "running.csv")
 
