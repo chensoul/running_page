@@ -25,7 +25,7 @@ class Generator:
         self.client_id = ""
         self.client_secret = ""
         self.refresh_token = ""
-        self.only_run = False
+        self.only_run = True
 
     def set_strava_config(self, client_id, client_secret, refresh_token):
         self.client_id = client_id
