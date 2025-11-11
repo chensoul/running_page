@@ -28,12 +28,22 @@ if "distance" in df.columns:
 
 
 def format_pace(d):
+    """
+    Convert speed (m/s) to pace format.
+
+    Args:
+        d: Speed in meters per second (m/s)
+
+    Returns:
+        str: Pace in format "{minutes}''{seconds}" (minutes per kilometer, min/km)
+             Example: "5''30" means 5 minutes 30 seconds per kilometer
+    """
     if not d:
         return "0"
     pace = (1000.0 / 60.0) * (1.0 / d)
     minutes = floor(pace)
     seconds = floor((pace - minutes) * 60.0)
-    return f"{minutes}m{seconds}s"
+    return f"{minutes}分{seconds}秒/公里"
 
 df["average_speed"] = df["average_speed"].apply(format_pace)
 df = df.sort_values(by=["start_date"])
