@@ -6,8 +6,8 @@ pnpm install
 pnpm develop
 ```
 
-下载 keep 运动数据：
+下载 keep 跑步数据：
 
 ```bash
-python run_page/data_to_csv.py
+python run_page/run_to_csv.py
 ```

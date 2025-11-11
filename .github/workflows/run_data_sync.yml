@@ -236,9 +236,9 @@ jobs:
           pip install duckdb==1.1.0
           python run_page/save_to_parqent.py
 
-      - name: Save data to csv
+      - name: Save Running data to csv
         run: |
-          python run_page/data_to_csv.py
+          python run_page/run_to_csv.py
 
       - name: Push new runs
         if: env.SAVE_DATA_IN_GITHUB_CACHE != 'true'
