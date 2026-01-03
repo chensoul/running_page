@@ -7,7 +7,11 @@ except Exception:
 from math import floor
 
 data = sqlite3.connect("run_page/data.db")
-df = pd.read_sql_query("SELECT run_id as id,name,distance,moving_time,elapsed_time,type,subtype,start_date,start_date_local,location_country,summary_polyline,average_heartrate,average_speed,elevation_gain FROM activities where type = 'Run' ", data)
+df = pd.read_sql_query(
+    "SELECT run_id as id,name,distance,moving_time,elapsed_time,type,subtype,start_date,start_date_local,location_country,summary_polyline,average_heartrate,average_speed,elevation_gain FROM activities where type = 'Run' ",
+    data,
+)
+
 
 def apply_duration_time(d):
     try:
@@ -45,16 +49,17 @@ def format_pace(d):
     seconds = floor((pace - minutes) * 60.0)
     return f"{minutes}分{seconds}秒/公里"
 
+
 df["average_speed"] = df["average_speed"].apply(format_pace)
 df = df.sort_values(by=["start_date"])
 
 # Write to CSV without index
 csv_path = "assets/running.csv"
-df.to_csv(csv_path, index=False, lineterminator='\n')
+df.to_csv(csv_path, index=False, lineterminator="\n")
 
 # Remove trailing newline from the file
-with open(csv_path, 'rb+') as f:
+with open(csv_path, "rb+") as f:
     f.seek(-1, 2)  # Go to the last byte
-    if f.read(1) == b'\n':
+    if f.read(1) == b"\n":
         f.seek(-1, 2)  # Go back one byte
         f.truncate()  # Remove the last byte

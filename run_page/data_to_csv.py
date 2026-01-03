@@ -19,6 +19,7 @@ df = df.drop("summary_polyline", axis=1)
 df["elapsed_time"] = df["elapsed_time"].apply(apply_duration_time)
 df["moving_time"] = df["moving_time"].apply(apply_duration_time)
 
+
 def format_pace(d):
     if not d:
         return "0"
@@ -26,6 +27,7 @@ def format_pace(d):
     minutes = floor(pace)
     seconds = floor((pace - minutes) * 60.0)
     return f"{minutes}''{seconds}"
+
 
 df["average_speed"] = df["average_speed"].apply(format_pace)
 df = df.sort_values(by=["start_date"])

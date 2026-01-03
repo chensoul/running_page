@@ -496,6 +496,7 @@ def download_keep_tcx(tcx_data, keep_id):
         print(f"wrong id {keep_id}")
         pass
 
+
 def run_keep_sync(
     email, password, keep_sports_data_api, with_gpx=False, with_tcx=False
 ):
@@ -509,6 +510,7 @@ def run_keep_sync(
     activities_list = generator.load()
     with open(JSON_FILE, "w") as f:
         json.dump(activities_list, f)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
