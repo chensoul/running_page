@@ -241,9 +241,9 @@ jobs:
           pip install duckdb==1.1.0
           python run_page/save_to_parqent.py
 
-      - name: Save Running data to csv
+      - name: Save Keep Running data to json
         run: |
-          python run_page/run_to_csv.py
+          python run_page/get_keep_data.py --mobile $KEEP_USERNAME --password $KEEP_PASSWORD
 
       - name: Push new runs
         if: env.SAVE_DATA_IN_GITHUB_CACHE != 'true'

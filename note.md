@@ -14,7 +14,7 @@ pnpm develop
 
 ```bash
 python3 run_page/keep_sync.py $KEEP_USERNAME $KEEP_PASSWORD --with-gpx --sync-types=running
-python3 run_page/run_to_csv.py
+python3 run_page/get_keep_data.py --mobile $KEEP_USERNAME --password $KEEP_PASSWORD
 ```
 
 3. 更新 github action
