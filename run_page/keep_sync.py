@@ -202,9 +202,10 @@ def parse_raw_data_to_nametuple(
         "start_latlng": start_latlng,
         "distance": run_data["distance"],
         "moving_time": timedelta(seconds=run_data["duration"]),
-        "elapsed_time": timedelta(
-            seconds=int((run_data["endTime"] - run_data["startTime"]) // 1000)
-        ),
+        # "elapsed_time": timedelta(
+        #     seconds=int((run_data["endTime"] - run_data["startTime"]) // 1000)
+        # ),
+        "elapsed_time": timedelta(seconds=run_data["duration"]),
         "average_speed": run_data["distance"] / run_data["duration"],
         "elevation_gain": elevation_gain,
         "location_country": str(run_data.get("region", "")),
