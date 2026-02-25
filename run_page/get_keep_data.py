@@ -61,9 +61,7 @@ class VDOTCalculator:
         velocity_m_per_min = distance_meters / duration_minutes
         if velocity_m_per_min <= 0:
             return None
-        vo2 = -4.60 + 0.182258 * velocity_m_per_min + 0.000104 * (
-            velocity_m_per_min**2
-        )
+        vo2 = -4.60 + 0.182258 * velocity_m_per_min + 0.000104 * (velocity_m_per_min**2)
         t = duration_minutes
         percent_vo2max = (
             0.8
@@ -251,25 +249,23 @@ def _build_segments_from_cross_km_points(
             continue
         km = pt.get("km") or pt.get("index") or (i + 1)
         km = int(km) if km is not None else (i + 1)
-        pace_val = (
-            pt.get("kmPace")
-        )
+        pace_val = pt.get("kmPace")
         pace_str = _pace_to_display(pace_val)
-        hr_val = (
-            pt.get("averageHeartRate")
-        )
+        hr_val = pt.get("averageHeartRate")
         heart_rate = int(hr_val) if hr_val is not None else 0
         hr_zone = vdot_calculator.get_hr_zone(heart_rate) if heart_rate else 0
         cadence = _safe_number(pt.get("stepFrequency"), "int")
         cadence = int(cadence) if cadence is not None else 0
-        segments_out.append({
-            "km": km,
-            "pace": pace_str,
-            "gap": pace_str,
-            "heart_rate": heart_rate,
-            "hr_zone": hr_zone,
-            "cadence": cadence,
-        })
+        segments_out.append(
+            {
+                "km": km,
+                "pace": pace_str,
+                "gap": pace_str,
+                "heart_rate": heart_rate,
+                "hr_zone": hr_zone,
+                "cadence": cadence,
+            }
+        )
     return segments_out
 
 
@@ -353,10 +349,14 @@ def _build_segments_from_keep_api(
         seg_end_dist = dist_series[seg_end_idx]
         seg_end_ts = points[seg_end_idx].get("_ts", seg_start_ts)
         seg_dist_m = seg_end_dist - seg_start_dist
-        seg_duration_sec = (seg_end_ts - seg_start_ts) / 10.0 if (seg_end_ts - seg_start_ts) > 0 else 1
+        seg_duration_sec = (
+            (seg_end_ts - seg_start_ts) / 10.0 if (seg_end_ts - seg_start_ts) > 0 else 1
+        )
         if seg_duration_sec <= 0:
             seg_duration_sec = 1
-        seg_pace_sec_per_km = (seg_duration_sec / seg_dist_m) * 1000 if seg_dist_m > 0 else 0
+        seg_pace_sec_per_km = (
+            (seg_duration_sec / seg_dist_m) * 1000 if seg_dist_m > 0 else 0
+        )
         pace_min = int(seg_pace_sec_per_km // 60)
         pace_sec = int(seg_pace_sec_per_km % 60)
         pace_str = f"{pace_min}'{pace_sec:02d}\""
@@ -369,14 +369,16 @@ def _build_segments_from_keep_api(
         avg_hr = int(round(sum(hrs) / len(hrs))) if hrs else 0
         hr_zone = vdot_calculator.get_hr_zone(avg_hr) if avg_hr else 0
 
-        segments_out.append({
-            "km": k,
-            "pace": pace_str,
-            "gap": pace_str,
-            "heart_rate": avg_hr,
-            "hr_zone": hr_zone,
-            "cadence": 0,
-        })
+        segments_out.append(
+            {
+                "km": k,
+                "pace": pace_str,
+                "gap": pace_str,
+                "heart_rate": avg_hr,
+                "hr_zone": hr_zone,
+                "cadence": 0,
+            }
+        )
         seg_start_idx = seg_end_idx
         seg_start_dist = seg_end_dist
         seg_start_ts = seg_end_ts
@@ -418,9 +420,7 @@ def _keep_api_run_to_row(
     try:
         from utils import adjust_time
 
-        start_date = datetime.fromtimestamp(
-            start_time_ms / 1000, tz=timezone.utc
-        )
+        start_date = datetime.fromtimestamp(start_time_ms / 1000, tz=timezone.utc)
         start_date_local = adjust_time(start_date, tz_name).strftime(
             "%Y-%m-%d %H:%M:%S"
         )
@@ -493,7 +493,11 @@ def _keep_api_run_to_row(
             distance_m,
             duration_sec,
             elevation_gain=elevation_gain or 0,
-            cross_km_points=api_data.get("crossKmPoints") if isinstance(api_data.get("crossKmPoints"), list) else None,
+            cross_km_points=(
+                api_data.get("crossKmPoints")
+                if isinstance(api_data.get("crossKmPoints"), list)
+                else None
+            ),
         )
         avg_power = est_avg
         max_power = est_max
@@ -509,9 +513,7 @@ def _keep_api_run_to_row(
         if isinstance(weather_info, str) and weather_info.strip():
             weather_str = weather_info.strip()
         elif isinstance(weather_info, dict):
-            weatherTypeIcon = (
-                weather_info.get("weatherTypeIcon")
-            )
+            # weatherTypeIcon
             temperature = weather_info.get("temperature")
             if temperature is not None and str(temperature).strip():
                 weather_str = f"{temperature}".strip()
@@ -538,9 +540,7 @@ def _keep_api_run_to_row(
         "max_power": max_power,
         "weather": weather_str,
     }
-    if vdot_calculator and (
-        api_data.get("crossKmPoints") or api_data.get("geoPoints")
-    ):
+    if vdot_calculator and (api_data.get("crossKmPoints") or api_data.get("geoPoints")):
         row["segments"] = _build_segments_from_keep_api(api_data, vdot_calculator)
     else:
         row["segments"] = []
@@ -549,6 +549,7 @@ def _keep_api_run_to_row(
 
 def _debug_json(obj: Any) -> str:
     """序列化为可打印的 JSON，支持 datetime 等类型。"""
+
     def _default(o: Any) -> Any:
         if hasattr(o, "isoformat"):
             return o.isoformat()
@@ -587,7 +588,9 @@ def fetch_keep_runs_via_api(
     all_run_ids = get_to_download_runs_ids(session, headers, sport_type)
     if limit is not None and limit > 0:
         run_ids = all_run_ids[:limit]
-        logger.info("Keep API 共 %d 条跑步 ID，仅拉取前 %d 条（调试）", len(all_run_ids), limit)
+        logger.info(
+            "Keep API 共 %d 条跑步 ID，仅拉取前 %d 条（调试）", len(all_run_ids), limit
+        )
     else:
         run_ids = all_run_ids
         logger.info("Keep API 共获取 %d 条跑步 ID", len(run_ids))
@@ -679,11 +682,7 @@ def format_running_data(
         training_load = vdot_calculator.calculate_training_load(
             duration_seconds, avg_hr if avg_hr > 0 else None
         )
-        hr_zone = (
-            vdot_calculator.get_hr_zone(avg_hr)
-            if avg_hr and avg_hr > 0
-            else 0
-        )
+        hr_zone = vdot_calculator.get_hr_zone(avg_hr) if avg_hr and avg_hr > 0 else 0
 
         route = parse_location_route(row.get("location_country", "") or "")
         name = (row.get("name") or "").strip() or ""
@@ -701,7 +700,9 @@ def format_running_data(
             if v is None:
                 return default
             try:
-                return int(v) if isinstance(v, (int, float)) and v == int(v) else float(v)
+                return (
+                    int(v) if isinstance(v, (int, float)) and v == int(v) else float(v)
+                )
             except (TypeError, ValueError):
                 return default
 
@@ -760,9 +761,7 @@ def format_running_data(
     formatted_runs.sort(key=lambda x: x["date"], reverse=True)
 
     # 周期统计
-    stats["period_stats"] = _calculate_period_stats(
-        formatted_runs, vdot_calculator
-    )
+    stats["period_stats"] = _calculate_period_stats(formatted_runs, vdot_calculator)
 
     return {"stats": stats, "runs": formatted_runs}
 
@@ -976,12 +975,12 @@ def main():
     mobile = (args.mobile or "").strip()
     password = (args.password or "").strip()
     if not mobile or not password:
-        print("请提供 --mobile 和 --password，或设置环境变量 KEEP_MOBILE、KEEP_PASSWORD")
+        print(
+            "请提供 --mobile 和 --password，或设置环境变量 KEEP_MOBILE、KEEP_PASSWORD"
+        )
         return
     vdot_calculator = VDOTCalculator()
-    rows = fetch_keep_runs_via_api(
-        mobile, password, limit=args.limit, debug=args.debug
-    )
+    rows = fetch_keep_runs_via_api(mobile, password, limit=args.limit, debug=args.debug)
 
     if not rows:
         print("没有读取到任何记录。")
