@@ -15,7 +15,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Any, Dict, List, Optional
 
 # 心率区间配置（用于 VDOT/训练负荷）
-MAX_HR = int(os.environ.get("MAX_HR", 180))
+MAX_HR = int(os.environ.get("MAX_HR", 190))
 RESTING_HR = int(os.environ.get("RESTING_HR", 55))
 # 体重 kg，用于本地功率估算（环境变量 RUNNER_WEIGHT_KG，默认 70）
 RUNNER_WEIGHT_KG = float(os.environ.get("RUNNER_WEIGHT_KG", "70"))
@@ -211,7 +211,7 @@ def _estimate_running_power(
 
 # dataType -> 活动类型中文（与 keep_sync 一致）
 KEEP_DATATYPE_TO_ACTIVITY = {
-    "outdoorRunning": "室外跑步",
+    "outdoorRunning": "户外跑步",
     "indoorRunning": "跑步机",
     "outdoorWalking": "步行",
     "outdoorCycling": "户外骑行",
@@ -448,10 +448,10 @@ def _keep_api_run_to_row(
     calorie = api_data.get("calorie") or api_data.get("calories")
     calories = _safe_number(calorie, "int")
 
-    # 活动类型：dataType -> 室外跑步/跑步机 等
+    # 活动类型：dataType -> 户外跑步/跑步机 等
     data_type = (api_data.get("dataType") or "").strip()
     activity_type = KEEP_DATATYPE_TO_ACTIVITY.get(
-        data_type, "室外跑步" if "run" in data_type.lower() else "跑步"
+        data_type, "户外跑步" if "run" in data_type.lower() else "跑步"
     )
 
     # 爬升：若 API 顶层有则用（无则 0；精确爬升需解码 geoPoints 算高程）
@@ -711,7 +711,7 @@ def format_running_data(
         stride_length = _row_num("stride_length", 0)
         avg_power = _row_num("avg_power", 0)
         max_power = _row_num("max_power", 0)
-        activity_type = (row.get("activity_type") or "").strip() or "室外跑步"
+        activity_type = (row.get("activity_type") or "").strip() or "户外跑步"
 
         run_data = {
             "date": start_local,
