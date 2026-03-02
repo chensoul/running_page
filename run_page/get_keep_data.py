@@ -762,6 +762,8 @@ def format_running_data(
 
     # 周期统计
     stats["period_stats"] = _calculate_period_stats(formatted_runs, vdot_calculator)
+    # 统计时间（本次统计生成的时间）
+    stats["statistics_time"] = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S")
 
     return {"stats": stats, "runs": formatted_runs}
 
@@ -931,6 +933,7 @@ def _recalculate_stats(
     stats["total_distance"] = round(stats["total_distance"], 2)
     stats["longest_run"] = round(stats["longest_run"], 1)
     stats["period_stats"] = _calculate_period_stats(runs, vdot_calculator)
+    stats["statistics_time"] = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S")
     return stats
 
 
