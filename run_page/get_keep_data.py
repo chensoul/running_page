@@ -15,7 +15,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Any, Dict, List, Optional
 
 # 心率区间配置（用于 VDOT/训练负荷）
-MAX_HR = int(os.environ.get("MAX_HR", 190))
+MAX_HR = int(os.environ.get("MAX_HR", 180))
 RESTING_HR = int(os.environ.get("RESTING_HR", 55))
 # 体重 kg，用于本地功率估算（环境变量 RUNNER_WEIGHT_KG，默认 70）
 RUNNER_WEIGHT_KG = float(os.environ.get("RUNNER_WEIGHT_KG", "70"))
@@ -39,13 +39,13 @@ class VDOTCalculator:
         if avg_hr <= 0:
             return 0
         hr_percent = (avg_hr / self.max_hr) * 100
-        if hr_percent < 70:
+        if hr_percent < 60:
             return 1
-        if hr_percent < 80:
+        if hr_percent < 70:
             return 2
-        if hr_percent < 87:
+        if hr_percent < 80:
             return 3
-        if hr_percent < 93:
+        if hr_percent < 90:
             return 4
         return 5
 
