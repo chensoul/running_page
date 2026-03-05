@@ -507,7 +507,7 @@ def _keep_api_run_to_row(
         max_power = 0
 
     # 天气：从 weatherInfo 取（可为字符串或对象 description/weather/condition，可选温度）
-    weather_str = "未知天气"
+    weather_str = ""
     weather_info = api_data.get("weatherInfo")
     if weather_info is not None:
         if isinstance(weather_info, str) and weather_info.strip():
@@ -773,10 +773,19 @@ def _calculate_period_stats(
     vdot_calculator: VDOTCalculator,
 ) -> Dict[str, Any]:
     now = datetime.now()
+    # 当前周：周一 00:00 至今天（ISO 周：周一为第 1 天）
+    days_since_monday = now.isoweekday() - 1
+    week_start = (now - timedelta(days=days_since_monday)).replace(
+        hour=0, minute=0, second=0, microsecond=0
+    )
+    # 当月：本月 1 日 00:00 至今天
+    month_start = datetime(now.year, now.month, 1)
+    # 当年：1 月 1 日 00:00 至今天
+    year_start = datetime(now.year, 1, 1)
     period_ranges = {
-        "week": {"start": now - timedelta(days=7), "end": now},
-        "month": {"start": datetime(now.year, now.month, 1), "end": now},
-        "year": {"start": datetime(now.year, 1, 1), "end": now},
+        "week": {"start": week_start, "end": now},
+        "month": {"start": month_start, "end": now},
+        "year": {"start": year_start, "end": now},
         "total": {"start": datetime.min, "end": now},
     }
     result = {}
