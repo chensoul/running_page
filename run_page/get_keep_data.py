@@ -773,6 +773,10 @@ def _calculate_period_stats(
     vdot_calculator: VDOTCalculator,
 ) -> Dict[str, Any]:
     now = datetime.now()
+    # 昨日：昨天 00:00 至昨天 23:59:59
+    yesterday_date = (now - timedelta(days=1)).date()
+    yesterday_start = datetime.combine(yesterday_date, datetime.min.time())
+    yesterday_end = datetime.combine(yesterday_date, datetime.max.time())
     # 当前周：周一 00:00 至今天（ISO 周：周一为第 1 天）
     days_since_monday = now.isoweekday() - 1
     week_start = (now - timedelta(days=days_since_monday)).replace(
@@ -783,6 +787,7 @@ def _calculate_period_stats(
     # 当年：1 月 1 日 00:00 至今天
     year_start = datetime(now.year, 1, 1)
     period_ranges = {
+        "yesterday": {"start": yesterday_start, "end": yesterday_end},
         "week": {"start": week_start, "end": now},
         "month": {"start": month_start, "end": now},
         "year": {"start": year_start, "end": now},
