@@ -16,7 +16,7 @@ const getBasePath = () => {
 
 const data: ISiteMetadataResult = {
   siteTitle: 'Running',
-  siteUrl: 'https://run.chensoul.cc',
+  siteUrl: 'https://run.zhijun.io',
   logo: 'https://avatars.githubusercontent.com/u/826932?v=4&size=64',
   description: 'Running Page',
   navLinks: [
@@ -26,7 +26,7 @@ const data: ISiteMetadataResult = {
     },
     {
       name: 'Blog',
-      url: 'https://blog.chensoul.cc',
+      url: 'https://blog.zhijun.io',
     },
   ],
 };
